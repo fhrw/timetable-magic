@@ -11,6 +11,7 @@ const testMatrix = [
   [31, 33, 24, 33, 29, 20, 25, 24, 30, 25],
 ];
 
+//subtracts min value from rows then subtracts min value from columns
 const s = (m) => {
   const rSub = m.map((r) => {
     const min = Math.min(...r);
@@ -28,6 +29,7 @@ const s = (m) => {
   });
 };
 
+//iterates over the matrix, first assigning single zeros in rows (cancelling other zeros in that column)
 const aL = (m) => {
   const mC = m.map((r) => r.map((n) => n));
   for (let i = 0; i < mC.length; i++) {
@@ -48,6 +50,7 @@ const aL = (m) => {
   return mC;
 };
 
+//checks the matrix and returns lines - intending to implement a 'it's done' stage here too I think
 const check = (m) => {
   const mr = m
     .map((r, i) => {
@@ -71,6 +74,7 @@ const check = (m) => {
   return [[...mr.flat()], [...cS]];
 };
 
+// creates new zeros by subbing the minimum number from all 'uncovered numbers' and adding it to all 'intersection' numbers
 const createZ = (m, l) => {
   const eN = l[0]
     .map((rI) => m[rI].map((i) => i).filter((n) => typeof n === "number"))
@@ -100,6 +104,7 @@ const createZ = (m, l) => {
   );
 };
 
+// assign the matrix - calls aL a few different times. It is recursive till there are no more zeros that can be assigned - either through them being all gone or through there being only unassignable zeros remaining
 const a = (m) => {
   const aR = aL(m);
   const cols = aR.map((r, i) => {
