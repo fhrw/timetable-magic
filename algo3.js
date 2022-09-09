@@ -152,6 +152,7 @@ const normalize = (m) => {
 };
 
 // assign the matrix - calls aL a few different times. It is recursive till there are no more zeros that can be assigned - either through them being all gone or through there being only unassignable zeros remaining
+// THIS IS DEPRECATED IN FAVOUR OF NEWASSIGN
 const a = (m) => {
   const aR = aL(m);
   const cols = aR.map((r, i) => {
